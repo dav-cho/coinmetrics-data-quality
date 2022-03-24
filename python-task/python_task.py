@@ -152,14 +152,14 @@ class Validate:
             "~ Number of markets with no trades in time window:",
             len(self.empty_markets),
         )
-        print('~ Empty Markets:')
+        print('~ Markets with no trades:')
         for market in self.empty_markets:
             print(f'~ {market}')
 
         print('~ Number of markets with out of order IDs:', len(self.invalid_trade_ids))
         for market in self.invalid_trade_ids:
             missing_trades = self.invalid_trade_ids[market]
-            print(f"{len(missing_trades)} discrepancy found with IDs in {market}")
+            print(f"~ {len(missing_trades)} discrepancies found with IDs in {market}")
             for trade_a, trade_b in missing_trades:
                 id_a = int(trade_a[ID_KEY])
                 id_b = int(trade_b[ID_KEY])
