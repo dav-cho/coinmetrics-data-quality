@@ -58,6 +58,26 @@ To run these tests simply run the test file in your terminal with the following 
 
 ## SQL Task
 
+### Technologies
+
+| Required | Installation Link                                 |
+| -------- | ------------------------------------------------- |
+| PostgreSQL   | [postgresql.org](https://www.postgresql.org/) |
+
+### Instructions
+
+For the SQL/Postgres task, I have generated some mock data for various markets of a given exchange.  
+These SQL files can be found in the `mock-data` directory.
+
+If you would like to generate your own data:
+  1. Set up a virtual environment with `pipenv` similar to the python task.
+  2. Run the command `pipenv run python generate-data.py`.  
+    - This will create a directory named `mock-data-[number]` where the number is the count of times the `generate-data.py` script was run.
+
+In order to run the SQL task (file name `sql-task.sql`), you will first have to create a database and then seed it.  
+Once the database is seeded simply run the `sql-task.sql` file in your PostgreSQL server.  
+e.g. `psql -d [database name] < sql-task.sql`
+
 ## Bash(zsh) Task
 
 ### Technologies
@@ -75,16 +95,16 @@ In order to run this file, you must have zsh installed on your machine.
 If you don't have zsh, the easiest way to install it is with [Homebrew](https://brew.sh/).  
 You can follow instructions on the homebrew website or paste this command into your terminal:
 
-> `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 Once homebrew is installed you can run `brew install zsh`.
 
 The script takes two parameters:
 
-1. The name of the market i.e. `coinbase-btc-usd-spot`.
-2. The time offset in seconds i.e. `120`
+1. The name of the market e.g. `coinbase-btc-usd-spot`.
+2. The time offset in seconds e.g. `120`
    To run the file you can simply change into the directory where the `get_trades.sh` file lives and run the following command:
-   > `./get_trades.sh [market] [time offset in seconds]`
+   `./get_trades.sh [market] [time offset in seconds]`
 
 Example: `./get_trades.sh coinbase-btc-usd-spot 120`
 
@@ -95,4 +115,5 @@ If you get an error, you may have to change the permissions for this file and ma
 > `sudo chmod +x get_trades.sh`
 
 The results of the API call will be printed to the console.  
-As a convenience, the script will write results by page to json files in the same directory named `page-[page #].json`
+As a convenience, the script will write results by page to json files in the same directory.
+Each page file is named with the convention: `page-[page #].json`
